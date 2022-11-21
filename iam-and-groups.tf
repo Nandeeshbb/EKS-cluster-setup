@@ -98,43 +98,6 @@ resource "aws_security_group" "dev-node" {
   }
 }
 
-##### OUTGOING TRAFFIC RESTRICTED
-
-# resource "aws_security_group_rule" "dev-node-egress-itvpc" {
-#   from_port                = 0
-#   protocol                 = "-1"
-#   security_group_id        = aws_security_group.dev-node.id
-#   cidr_blocks              = [var.itvpc_cidr_block]
-#   to_port                  = 0
-#   type                     = "egress"
-# }
-
-# resource "aws_security_group_rule" "dev-node-egress-self-vpc" {
-#   from_port                = 0
-#   protocol                 = "-1"
-#   security_group_id        = aws_security_group.dev-node.id
-#   cidr_blocks              = [var.vpc_cidr_block]
-#   to_port                  = 0
-#   type                     = "egress"
-# }
-
-# resource "aws_security_group_rule" "dev-node-egress-https" {
-#   from_port                = 443
-#   protocol                 = "tcp"
-#   security_group_id        = aws_security_group.dev-node.id
-#   cidr_blocks              = ["0.0.0.0/0"]
-#   to_port                  = 443
-#   type                     = "egress"
-# }
-
-# resource "aws_security_group_rule" "dev-node-egress-http" {
-#   from_port                = 80
-#   protocol                 = "tcp"
-#   security_group_id        = aws_security_group.dev-node.id
-#   cidr_blocks              = ["0.0.0.0/0"]
-#   to_port                  = 80
-#   type                     = "egress"
-# }
 
 resource "aws_security_group_rule" "dev-node-ingress-self" {
   description              = "Allow node to communicate with each other"
