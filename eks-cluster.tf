@@ -48,7 +48,6 @@ resource "aws_security_group" "dev-cluster-sg" {
 
   tags = {
     Name     = "dev-eks-cluster-sg",
-    OWNER    = "SURESH",
     FUNCTION = "EKS-DEV",
     PRODUCT  = "EKS-DEV",
     TEAM     = "DEVOPS",
@@ -75,40 +74,6 @@ resource "aws_security_group_rule" "dev-cluster-ingress-it-vpc" {
   type                     = "ingress"
 }
 
-resource "aws_security_group" "dev-rds-sg" {
-  name        = "terraform-dev-rds-private"
-  description = "Security group for RDS"
-  vpc_id      = aws_vpc.development.id
-
-  tags = {
-    Name     = "dev-shared-rds",
-    OWNER    = "SURESH",
-    FUNCTION = "EKS-DEV",
-    PRODUCT  = "EKS-DEV",
-    TEAM     = "DEVOPS",
-  }
-}
-
-resource "aws_security_group_rule" "dev-rds-ingress-dev-vpc" {
-  description              = "Allow Dev VPC to communicate with MYSQL/Aurora"
-  from_port                = 3306
-  protocol                 = "tcp"
-  security_group_id        = aws_security_group.dev-rds-sg.id
-  cidr_blocks              = [var.vpc_cidr_block]
-  to_port                  = 3306
-  type                     = "ingress"
-}
-
-resource "aws_security_group_rule" "dev-rds-ingress-it-vpc" {
-  description              = "Allow IT VPC to communicate with MYSQL/Aurora"
-  from_port                = 3306
-  protocol                 = "tcp"
-  security_group_id        = aws_security_group.dev-rds-sg.id
-  cidr_blocks              = [var.itvpc_cidr_block]
-  to_port                  = 3306
-  type                     = "ingress"
-}
-
 resource "aws_eks_cluster" "dev" {
 
   name     = var.cluster-name
@@ -118,7 +83,6 @@ resource "aws_eks_cluster" "dev" {
 
   tags = {
     Name        = "eks-develop",
-    OWNER       = "SURESH",
     ENVIRONMENT = "DEVELOPMENT"
     FUNCTION    = "EKS-DEV",
     PRODUCT     = "EKS-DEV",
