@@ -92,7 +92,6 @@ resource "aws_security_group" "dev-node" {
   tags = {
     Name                                        = "dev-eks-node-sg",
     "kubernetes.io/cluster/${var.cluster-name}" = "owned",
-    OWNER                                       = "SURESH",
     FUNCTION                                    = "EKS-DEV",
     PRODUCT                                     = "EKS-DEV",
     TEAM                                        = "DEVOPS",
