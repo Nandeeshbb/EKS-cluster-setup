@@ -1,1 +1,22 @@
-# EKS-cluster-setup
+# README #
+
+BitBucket repository for dev VPC and EKS Terraform files.
+
+### What is this repository for? ###
+
+* Terraform files for Development VPC and eks-develop
+
+### How do I get set up? ###
+
+* Requires:
+    * Terraform v1.0.1
+    * Log into dev AWS SSO with Devops-Admins role
+
+### Contribution guidelines ###
+
+* Run Terraform plan and then Terraform apply
+* Make sure the state file is in sync with the infrastructure
+
+### Who do I talk to? ###
+
+* DevOps Team <devops@miqdigital.com>
