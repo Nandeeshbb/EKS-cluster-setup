@@ -11,7 +11,7 @@ resource "aws_vpc" "development" {
   enable_dns_hostnames = true
 
   tags = {
-     Name = "MiQ-Dev",
+     Name = "Dev",
      "kubernetes.io/cluster/${var.cluster-name}" = "shared",
   }
 }
