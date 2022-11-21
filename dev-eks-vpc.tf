@@ -30,11 +30,6 @@ resource "aws_subnet" "public-dev" {
      Name                                        = "dev-eks-public-firewall-protected-subnet",
      "kubernetes.io/cluster/${var.cluster-name}" = "shared",
      "kubernetes.io/role/elb"                    = "1",
-     TEAM                                        = "IT",
-     PRODUCT                                     = "EKS-DEV",
-     FUNCTION                                    = "EKS-DEV",
-     OWNER                                       = "SONY",
-     Tier                                        = "Public",
      Environment                                 = "Prod",
   }
 }
@@ -69,12 +64,7 @@ resource "aws_route_table" "public-dev" {
   vpc_id = aws_vpc.development.id
 
   tags = {
-        Name        = "dev-public-firewall-route-table",
-        TEAM        = "IT",
-        PRODUCT     = "EKS-DEV",
-        ENVIRONMENT = "DEVELOPMENT",
-        FUNCTION    = "EKS-DEV",
-        OWNER       = "SONY"
+        Name        = "dev-public-firewall-route-table"
     }
 }
 
@@ -103,13 +93,7 @@ resource "aws_subnet" "private-dev" {
   tags = {
     Name                                        = "dev-eks-private-app-subnet",
     "kubernetes.io/cluster/${var.cluster-name}" = "shared",
-    "kubernetes.io/role/internal-elb"           = "1",
-    TEAM                                        = "IT",
-    PRODUCT                                     = "EKS-DEV",
-    FUNCTION                                    = "EKS-DEV",
-    OWNER                                       = "SONY",     
-    Tier                                        = "Private",
-    Environment                                 = "Prod",
+    "kubernetes.io/role/internal-elb"           = "1"
   }
 }
 
@@ -122,12 +106,7 @@ resource "aws_subnet" "private-dev-db" {
   cidr_block        = var.private_subnets_db[count.index]
   vpc_id            = aws_vpc.development.id
   tags = {
-    Name        = "dev-eks-private-db-subnet",
-    TEAM        = "IT",
-    PRODUCT     = "EKS-DEV",
-    ENVIRONMENT = "DEVELOPMENT",
-    FUNCTION    = "EKS-DEV",
-    OWNER       = "SONY"
+    Name        = "dev-eks-private-db-subnet"
   }  
 
 }
@@ -137,12 +116,7 @@ resource "aws_route_table" "private-dev-db" {
   count = length(var.private_subnets_db)
   
   tags = {
-    Name        = "dev-private-db-route-table",
-    TEAM        = "IT",
-    PRODUCT     = "EKS-DEV",
-    ENVIRONMENT = "DEVELOPMENT",
-    FUNCTION    = "EKS-DEV",
-    OWNER       = "SONY"
+    Name        = "dev-private-db-route-table"
   }
 }
 
@@ -199,12 +173,7 @@ resource "aws_route_table" "private-dev" {
 count = length(var.private_subnets)
 
   tags = {
-        Name        = "dev-private-route-table",
-        TEAM        = "IT",
-        PRODUCT     = "EKS-DEV",
-        ENVIRONMENT = "DEVELOPMENT",
-        FUNCTION    = "EKS-DEV",
-        OWNER       = "SONY"
+        Name        = "dev-private-route-table"
     }
 }
 
@@ -235,12 +204,7 @@ resource "aws_vpc_endpoint" "s3" {
   service_name = "com.amazonaws.us-east-1.s3"
 
   tags = {
-    Name        = "dev-s3-vpc-endpoint",
-    TEAM        = "IT",
-    PRODUCT     = "EKS-DEV",
-    ENVIRONMENT = "DEVELOPMENT",
-    FUNCTION    = "EKS-DEV",
-    OWNER       = "SONY"
+    Name        = "dev-s3-vpc-endpoint"
   }
 }
 
