@@ -10,7 +10,6 @@ BitBucket repository for dev VPC and EKS Terraform files.
 
 * Requires:
     * Terraform v1.0.1
-    * Log into dev AWS SSO with Devops-Admins role
 
 ### Contribution guidelines ###
 
@@ -18,5 +17,3 @@ BitBucket repository for dev VPC and EKS Terraform files.
 * Make sure the state file is in sync with the infrastructure
 
 ### Who do I talk to? ###
-
-* DevOps Team <devops@miqdigital.com>
